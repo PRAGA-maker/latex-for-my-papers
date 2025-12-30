@@ -1,0 +1,73 @@
+% main.tex
+% Compile: pdflatex main.tex  (or latexmk -pdf main.tex)
+% Toggle line numbers:
+%   - \reviewtrue  = internal "review copy" with left-margin line numbers
+%   - \reviewfalse = arXiv-safe (no line numbers)
+
+\documentclass[11pt]{article}
+
+% ---------- Toggle ----------
+\newif\ifreview
+\reviewtrue
+% \reviewfalse
+
+% ---------- Layout / typography ----------
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage{setspace}
+\usepackage{newtxtext,newtxmath} % Times-like (common in policy/health/ML drafts)
+
+% ---------- Title / authors ----------
+\usepackage{authblk}
+\setlength{\affilsep}{0.6em}
+\renewcommand\Authfont{\large}
+\renewcommand\Affilfont{\normalsize}
+
+% ---------- Line numbers (review copy style) ----------
+\usepackage[left]{lineno}
+\ifreview
+  \linenumbers
+  \setpagewiselinenumbers
+  \modulolinenumbers[1]
+  \renewcommand\linenumberfont{\normalfont\tiny\sffamily}
+  \setlength\linenumbersep{10pt}
+\fi
+
+% ---------- Misc ----------
+\usepackage[hidelinks]{hyperref}
+
+% ---------- Metadata ----------
+\title{\textbf{Large Scale Clinical Implications of Contrast Agent Withholding}}
+\author[1]{Praneel Patel}
+\author[2]{Eric Hong}
+\author[3]{Adhityha Guhan}
+\author[4]{Michelle Ramim}
+
+\affil[1]{Ohio State University}
+\affil[2]{Case Western Reserve University}
+\affil[3]{University of Illinois}
+\affil[4]{Nova Southeastern University}
+
+\date{December 30, 2025}
+
+\begin{document}
+\maketitle
+
+% Optional: slightly tighter spacing under title block
+\vspace{-0.5em}
+
+\begin{abstract}
+\noindent\textbf{Background:}
+Contrast-enhanced imaging improves diagnostic yield, but contrast is often withheld due to concerns about contrast-associated acute kidney injury (CA-AKI) and cautious institutional risk posture. Professional society guidance (e.g., American College of Radiology) has progressively supported IV contrast use even in high-risk patients (acute renal dysfunction, CKD stage 4--5), emphasizing contextual clinical judgment and prophylaxis; however, real-world adherence and the clinical consequences of withholding remain poorly quantified.
+
+\noindent\textbf{Methods:}
+Using NIH All of Us EHR data (>630{,}000 participants), we emulated target trials comparing contrast versus no-contrast strategies in four high-volume imaging contexts with protocol equipoise (CT chest, CT pelvis, CT abdomen/pelvis, MRI abdomen; analytic \(n=59{,}573\)). We estimated risk differences for 30-day AKI with cross-fitted efficient influence function augmented inverse probability weighting (EIF-AIPW), overlap trimming, and doubly robust nuisance models.
+
+\noindent\textbf{Results:}
+Contrast was avoided in 19\% of eligible encounters. In the highest-risk renal subgroup (baseline eGFR \(<30\) mL/min/1.73 m\(^2\); \(n=358\)), contrast use was associated with a 12.6--percentage-point lower risk of 30-day AKI (49\% relative reduction). Across CT procedures, estimated effects were consistently protective and largest for CT chest (5.6--percentage-point reduction; 39\% relative). MRI abdomen showed a small 0.07--percentage-point increase.
+
+\noindent\textbf{Conclusions:}
+In a large national EHR cohort, contrast avoidance in imaging with protocol equipoise was common, and contrast administration was not associated with higher 30-day AKI risk---even among patients with severe renal dysfunction. These findings support re-evaluating renal-risk--motivated contrast avoidance and motivate scalable trial-emulation audits across additional outcomes and decision policies.
+\end{abstract}
+
+\end{document}

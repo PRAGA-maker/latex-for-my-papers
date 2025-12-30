@@ -1,0 +1,12 @@
+# ignore everything
+*
+
+# but keep all directories (so git can see allowed files inside them)
+!*/
+
+# keep LaTeX + Markdown
+!*.tex
+!*.md
+
+# keep this file
+!.gitignore
